@@ -1,0 +1,48 @@
+<div class="container">
+    <h1>Crear Nuevo Pedido</h1>
+  
+    <a href="#" routerLink="/pedidos" class="btn btn-primary">Volver</a>
+        
+    <form [formGroup]="form" (ngSubmit)="submit()">
+  
+        <div class="form-group">
+            <label for="nombreCliente">Nombre del Cliente:</label>
+            <input 
+                formControlName="nombreCliente"
+                id="nombreCliente" 
+                type="text" 
+                class="form-control">
+            <div *ngIf="f['nombreCliente'].touched && f['nombreCliente'].invalid" class="alert alert-danger">
+                <div *ngIf="f['nombreCliente'].errors && f['nombreCliente'].errors['required']">El Nombre del Cliente es requerido</div>
+            </div>
+        </div>
+  
+        <div class="form-group">
+            <label for="direccionCliente">Dirección del Cliente</label>
+            <textarea 
+                formControlName="direccionCliente"
+                id="direccionCliente" 
+                type="text" 
+                class="form-control">
+            </textarea>
+            <div *ngIf="f['direccionCliente'].touched && f['direccionCliente'].invalid" class="alert alert-danger">
+                <div *ngIf="f['direccionCliente'].errors && f['direccionCliente'].errors['required']">La Dirección del Cliente es requerida</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="telefonoCliente">Teléfono del Cliente</label>
+            <textarea 
+                formControlName="telefonoCliente"
+                id="telefonoCliente" 
+                type="text" 
+                class="form-control">
+            </textarea>
+            <div *ngIf="f['telefonoCliente'].touched && f['telefonoCliente'].invalid" class="alert alert-danger">
+                <div *ngIf="f['telefonoCliente'].errors && f['telefonoCliente'].errors['required']">El Teléfono del Cliente es requerido</div>
+            </div>
+        </div>
+  
+        <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Guardar</button>
+    </form>
+</div>

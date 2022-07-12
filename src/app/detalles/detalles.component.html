@@ -1,0 +1,34 @@
+<div class="row justify-content-center">   
+
+    <div class="col-lg-4 col-md-4 col-sm-4">        
+        <div class="card" style="width: 18rem; padding: 10px; margin: 40px;">            
+            <div class="card-body">
+              <h5 class="card-title">DETALLES</h5>                                          
+              <a class="nav-link" [routerLink]="['/nuevo-detalle']" routerLinkActive="active">Nuevo Detalle</a>              
+            </div>
+          </div>
+    </div>    
+
+    <div *ngIf="detalles$ | async as data">
+        <div class="col-lg-8 col-md-8 col-sm-8">
+            <table class="table table-striped" style="width:100%; margin: 40px;">
+                <thead class="thead-dark">                    
+                    <th>Nombre del Artículo</th>
+                    <th>Cantidad del Artículo</th>
+                    <th>Id del Pedido</th>                    
+                    <th style="width:100px;">Actions</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of data">                        
+                        <td>{{item.nombreArticulo | json}}</td>
+                        <td>{{item.cantidadArticulo}}</td>
+                        <td>{{item.idPedido}}</td>                            
+                        <td><a class="btn btn-primary" [routerLink]="['/editar-detalle', item.idDetalle]" routerLinkActive="active">Editar</a></td>     
+                        <td><a class="btn btn-primary" [routerLink]="['/eliminar-detalle', item.idDetalle]" routerLinkActive="active">Eliminar</a></td>                                                                    
+                    </tr>                    
+            </table>
+        </div>
+    </div>
+
+</div>
+

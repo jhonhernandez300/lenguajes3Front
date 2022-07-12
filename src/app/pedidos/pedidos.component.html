@@ -1,0 +1,36 @@
+<div class="row justify-content-center">   
+
+    <div class="col-lg-4 col-md-4 col-sm-4">        
+        <div class="card" style="width: 18rem; padding: 10px; margin: 40px;">            
+            <div class="card-body">
+              <h5 class="card-title">PEDIDOS</h5>                                          
+              <a class="nav-link" [routerLink]="['/nuevo-pedido']" routerLinkActive="active">Nuevo Pedido</a>              
+            </div>
+          </div>
+    </div>
+
+    <div *ngIf="pedidos">
+        <div class="col-lg-8 col-md-8 col-sm-8">
+            <table class="table table-striped" style="width:100%; margin: 40px;">
+                <thead class="thead-dark">                    
+                    <th>Nombre del cliente</th>
+                    <th>Dirección del cliente</th>
+                    <th>Teléfono del cliente</th>
+                    <th>Fecha del pedido</th>
+                    <th style="width:100px;">Action</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of pedidos">
+                        <td>{{item.nombreCliente}}</td>
+                        <td>{{item.direccionCliente}}</td>
+                        <td>{{item.telefonoCliente}}</td>   
+                        <td>{{item.fechaPedido}}</td>  
+                        <td><a class="btn btn-primary" [routerLink]="['/editar-pedido', item.idPedido]" routerLinkActive="active">Editar</a></td>                        
+                        <td><a class="nav-link" [routerLink]="['/detalles', item.idPedido]" routerLinkActive="active">Ver/Ingresar detalles</a></td>
+                        <td><button type="button" (click)="eliminarPedido(item.idPedido)" class="btn btn-danger">Borrar</button></td>     
+                    </tr>
+            </table>
+        </div>
+    </div>
+
+</div>

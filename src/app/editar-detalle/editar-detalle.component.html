@@ -1,0 +1,56 @@
+<div class="container">
+    <h1>Editar Detalle</h1>
+  
+    <a href="#" routerLink="/pedidos" class="btn btn-primary">Volver</a>
+        
+    <div *ngIf="detalles">
+    <form [formGroup]="form" (ngSubmit)="submit()">
+  
+        <div class="form-group">
+            <label for="nombreArticulo">Nombre del artículo:</label>
+            <input 
+                formControlName="nombreArticulo"
+                id="nombreArticulo" 
+                type="text" 
+                class="form-control"
+                [(ngModel)]="detalles.nombreArticulo">
+            <div *ngIf="f['nombreArticulo'].touched && f['nombreArticulo'].invalid" class="alert alert-danger">
+                <div *ngIf="f['nombreArticulo'].errors && f['nombreArticulo'].errors['required']">El Nombre del artículo es requerido</div>
+            </div>
+        </div>
+  
+        <div class="form-group">
+            <label for="cantidadArticulo">Cantidad del artículo</label>
+            <textarea 
+                formControlName="cantidadArticulo"
+                id="cantidadArticulo" 
+                type="text" 
+                class="form-control"
+                [(ngModel)]="detalles.cantidadArticulo">
+            </textarea>
+            <div *ngIf="f['cantidadArticulo'].touched && f['cantidadArticulo'].invalid" class="alert alert-danger">
+                <div *ngIf="f['cantidadArticulo'].errors && f['cantidadArticulo'].errors['required']">Cantidad del artículo es requerida</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="idPedido">Id del pedido</label>
+            <textarea 
+                formControlName="idPedido"
+                id="idPedido" 
+                type="text" 
+                class="form-control"
+                [(ngModel)]="detalles.idPedido">
+            </textarea>
+            <div *ngIf="f['idPedido'].touched && f['idPedido'].invalid" class="alert alert-danger">
+                <div *ngIf="f['idPedido'].errors && f['idPedido'].errors['required']">El Id del pedido es requerido</div>
+            </div>
+        </div>
+  
+        <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Guardar</button>
+    </form>
+</div>
+</div>
+
+
+
